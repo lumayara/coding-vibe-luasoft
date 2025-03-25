@@ -1,7 +1,5 @@
 # 2025 Vibe Coding Game Jam 🎮✨
 
-![Game Jam Banner](https://vibejam.io/images/vibejam-og.jpg)
-
 ## Overview
 
 The 2025 Vibe Coding Game Jam is the first game jam focused exclusively on AI-generated vibe-coded games. This event challenges developers to create web-based multiplayer games using AI assistance, with a $5,000+ prize pool.
