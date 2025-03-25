@@ -718,93 +718,123 @@ section {
   }
 }
 
-/* Jury Section */
+/* Updated Jury Section Styles */
+
 .jury-section {
-  background-color: var(--darker);
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.jury-section-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.jury-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 30px;
-}
-
-.jury-card {
-  text-align: center;
-  transition: 0.3s ease;
-}
-
-.jury-photo {
-  position: relative;
-  width: 100%;
-  padding-bottom: 100%;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-bottom: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: 0.3s ease;
-}
-
-.jury-photo img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transition: 0.5s ease;
-}
-
-.jury-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to top, rgba(7, 7, 20, 0.8), transparent);
-}
-
-.jury-card:hover .jury-photo {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-}
-
-.jury-card:hover img {
-  transform: scale(1.05);
-}
-
-/* Updates to fix jury tag alignment while keeping current layout */
-.jury-name {
+    background-color: var(--darker);
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  .jury-section-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .jury-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 30px;
+  }
+  
+  .jury-card {
+    text-align: center;
+    transition: var(--transition-standard);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .jury-photo {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: var(--transition-standard);
+  }
+  
+  .jury-photo img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: 0.5s ease;
+  }
+  
+  .jury-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(7, 7, 20, 0.8), transparent);
+    z-index: 1;
+  }
+  
+  /* Bio hover effect */
+  .jury-bio-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(7, 7, 20, 0.9);
+    color: var(--light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    z-index: 2;
+    backdrop-filter: blur(3px);
+    border-radius: 10px;
+  }
+  
+  .jury-card:hover .jury-bio-hover {
+    opacity: 1;
+  }
+  
+  .jury-card:hover .jury-photo {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  }
+  
+  .jury-card:hover img {
+    transform: scale(1.05);
+  }
+  
+  /* Add a subtle glowing border on hover */
+  .jury-card:hover .jury-photo {
+    border-color: var(--primary);
+    box-shadow: 0 0 15px rgba(0, 255, 170, 0.3);
+  }
+  
+  .jury-name {
     font-size: 1.2rem;
-    margin-bottom: 0; /* Changed from 5px */
-    display: inline-block;
+    margin-bottom: 5px;
+    display: block;
   }
   
   .jury-tag {
     color: var(--secondary);
     margin-bottom: 10px;
     font-weight: 600;
-    display: inline-block;
-    margin-left: 8px;
+    display: block;
+    margin-top: 0;
   }
   
-  /* Atari-inspired pixel effect */
-  .jury-card {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  /* Add a subtle pixel grid on hover */
+  /* Enhanced hover effects */
   .jury-card::after {
     content: '';
     position: absolute;
@@ -818,46 +848,36 @@ section {
     background-size: 8px 8px;
     pointer-events: none;
     opacity: 0;
-    z-index: 2;
+    z-index: 0;
     transition: opacity 0.5s ease;
   }
   
   .jury-card:hover::after {
-    opacity: 1;
+    opacity: 0.3;
   }
   
-  /* Atari-style scan line effect */
-  .jury-card::before {
-    content: '';
-    position: absolute;
-    top: -100%;
-    left: 0;
-    width: 100%;
-    height: 5px;
-    background: rgba(0, 255, 170, 0.2);
-    z-index: 3;
-    pointer-events: none;
-    animation: none;
-    box-shadow: 0 0 8px rgba(0, 255, 170, 0.4);
-  }
-  
-  .jury-card:hover::before {
-    animation: scanline 2s linear infinite;
-  }
-  
-  @keyframes scanline {
-    0% {
-      top: -5px;
+  /* Media queries */
+  @media (max-width: 768px) {
+    .jury-grid {
+      gap: 20px;
     }
-    100% {
-      top: 100%;
+    
+    .jury-bio-hover {
+      font-size: 0.85rem;
+      padding: 15px;
     }
   }
-
-.jury-bio {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.7);
-}
+  
+  @media (max-width: 576px) {
+    .jury-grid {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+    
+    .jury-bio-hover {
+      font-size: 0.8rem;
+      padding: 10px;
+    }
+  }
 
 /* Sponsors Section - New */
 .sponsors-section {
