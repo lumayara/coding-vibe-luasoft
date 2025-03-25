@@ -1,5 +1,3 @@
-/* Futuristic Gaming Style CSS for Vibejam */
-
 /* Import Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
 
@@ -13,6 +11,11 @@
   --accent: #4d00ff;
   --neon-glow: 0 0 10px var(--primary), 0 0 20px rgba(0, 255, 170, 0.4);
   --neon-glow-secondary: 0 0 10px var(--secondary), 0 0 20px rgba(255, 0, 170, 0.4);
+  --transition-standard: 0.3s ease;
+  --card-bg: rgba(15, 15, 30, 0.6);
+  --card-border: 1px solid rgba(255, 255, 255, 0.1);
+  --card-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  --card-shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
 /* Base Styles */
@@ -92,7 +95,7 @@ h1, h2, h3, h4, h5, h6 {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  transition: 0.3s ease;
+  transition: var(--transition-standard);
 }
 
 .game-nav.scrolled {
@@ -134,7 +137,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
   padding: 5px 0;
   position: relative;
-  transition: 0.3s ease;
+  transition: var(--transition-standard);
 }
 
 .nav-link::after {
@@ -145,7 +148,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 0;
   height: 2px;
   background: var(--primary);
-  transition: 0.3s ease;
+  transition: var(--transition-standard);
 }
 
 .nav-link:hover {
@@ -163,7 +166,7 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 4px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 15px rgba(77, 0, 255, 0.4);
-  transition: 0.3s ease;
+  transition: var(--transition-standard);
 }
 
 .btn-nav:hover {
@@ -185,7 +188,7 @@ h1, h2, h3, h4, h5, h6 {
 header {
   padding: 200px 0 120px;
   position: relative;
- }
+}
 
 header::before {
   content: '';
@@ -198,230 +201,6 @@ header::before {
   z-index: -1;
 }
 
-/* Header Highlights Styling - Aligned on one row */
-.header-highlights {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin: 30px 0;
-    flex-wrap: nowrap; /* Prevent wrapping */
-  }
-  
-  .highlight-box {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    background: rgba(15, 15, 30, 0.7);
-    padding: 15px 25px;
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    transition: 0.3s ease;
-    /* Set a flex basis to ensure they take equal space */
-    flex: 1;
-    max-width: 220px;
-  }
-  
-  .highlight-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-    border-color: var(--primary);
-  }
-  
-  .highlight-icon {
-    font-size: 2.5rem;
-    color: var(--primary);
-    text-shadow: var(--neon-glow);
-  }
-  
-  .highlight-content {
-    text-align: left;
-  }
-  
-  .highlight-content h3 {
-    font-size: 1.4rem;
-    margin-bottom: 0;
-    color: var(--light);
-    white-space: nowrap; /* Prevent line breaks */
-  }
-  
-  .highlight-content p {
-    font-size: 0.9rem;
-    margin: 0;
-    color: rgba(255, 255, 255, 0.7);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 600px) {
-    .header-highlights {
-      flex-direction: row; /* Keep as row even on small screens */
-      gap: 15px;
-      padding: 0 20px;
-    }
-    
-    .highlight-box {
-      padding: 12px 15px;
-    }
-    
-    .highlight-icon {
-      font-size: 2rem;
-    }
-    
-    .highlight-content h3 {
-      font-size: 1.1rem;
-    }
-    
-    .highlight-content p {
-      font-size: 0.8rem;
-    }
-  }
-/* Requirements Grid Section */
-.requirements-section {
-    background-color: var(--dark);
-    position: relative;
-  }
-  
-  .requirements-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 25px;
-  }
-  
-  .requirement-card {
-    background: rgba(15, 15, 30, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    padding: 25px;
-    transition: 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .requirement-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(0, 255, 170, 0.03), rgba(77, 0, 255, 0.03));
-    z-index: -1;
-  }
-  
-  .requirement-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-    border-color: var(--primary);
-  }
-  
-  .requirement-icon {
-    font-size: 2.5rem;
-    color: var(--primary);
-    margin-bottom: 20px;
-    text-shadow: var(--neon-glow);
-    transition: 0.3s ease;
-  }
-  
-  .requirement-card:hover .requirement-icon {
-    transform: scale(1.1);
-  }
-  
-  .requirement-title {
-    font-size: 1.3rem;
-    margin-bottom: 15px;
-    position: relative;
-    padding-bottom: 10px;
-  }
-  
-  .requirement-title::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 50px;
-    height: 2px;
-    background: var(--primary);
-    box-shadow: var(--neon-glow);
-  }
-  
-  .requirement-desc {
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.8);
-    flex-grow: 1;
-  }
-  
-  /* Special card styling */
-  .special-card {
-    background: rgba(77, 0, 255, 0.15);
-    border-color: rgba(255, 0, 170, 0.2);
-  }
-  
-  .special-card .requirement-icon {
-    color: var(--secondary);
-    text-shadow: var(--neon-glow-secondary);
-  }
-  
-  .special-card .requirement-title::after {
-    background: var(--secondary);
-    box-shadow: var(--neon-glow-secondary);
-  }
-
-  /* Atari-inspired scan line effect for requirement cards */
-  .requirement-card::after {
-    content: '';
-    position: absolute;
-    top: -100%;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: rgba(0, 255, 170, 0.2);
-    z-index: 3;
-    pointer-events: none;
-    animation: none;
-    box-shadow: 0 0 8px rgba(0, 255, 170, 0.4);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  
-  .requirement-card:hover::after {
-    animation: req-scanline 2s linear infinite;
-    opacity: 1;
-  }
-  
-  @keyframes req-scanline {
-    0% {
-      top: -3px;
-    }
-    100% {
-      top: 100%;
-    }
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .header-highlights {
-      flex-direction: column;
-      gap: 15px;
-      padding: 0 20px;
-    }
-    
-    .highlight-box {
-      width: 100%;
-    }
-    
-    .requirements-grid {
-      grid-template-columns: 1fr;
-    }
-  }
 .title-container {
   text-align: center;
   max-width: 800px;
@@ -455,6 +234,61 @@ header::before {
   color: rgba(255, 255, 255, 0.8);
 }
 
+/* Header Highlights */
+.header-highlights {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 30px 0;
+  flex-wrap: nowrap;
+}
+
+.highlight-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: var(--card-bg);
+  padding: 15px 25px;
+  border-radius: 10px;
+  border: var(--card-border);
+  box-shadow: var(--card-shadow);
+  transition: var(--transition-standard);
+  flex: 1;
+  max-width: 220px;
+}
+
+.highlight-box:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--card-shadow-hover);
+  border-color: var(--primary);
+}
+
+.highlight-icon {
+  font-size: 2.5rem;
+  color: var(--primary);
+  text-shadow: var(--neon-glow);
+}
+
+.highlight-content {
+  text-align: left;
+}
+
+.highlight-content h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0;
+  color: var(--light);
+  white-space: nowrap;
+}
+
+.highlight-content p {
+  font-size: 0.9rem;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Countdown */
 .countdown {
   display: flex;
   justify-content: center;
@@ -466,11 +300,11 @@ header::before {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgba(15, 15, 30, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--card-bg);
+  border: var(--card-border);
   border-radius: 8px;
   padding: 15px 25px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--card-shadow);
   backdrop-filter: blur(5px);
   position: relative;
   overflow: hidden;
@@ -502,32 +336,7 @@ header::before {
   color: rgba(255, 255, 255, 0.7);
 }
 
-.hashtag {
-  font-size: 1.5rem;
-  margin: 20px 0 40px;
-  color: var(--secondary);
-  text-shadow: var(--neon-glow-secondary);
-  font-family: 'Orbitron', sans-serif;
-  letter-spacing: 1px;
-  position: relative;
-  display: inline-block;
-}
-
-.hashtag::before, .hashtag::after {
-  content: '{ }';
-  position: absolute;
-  opacity: 0.4;
-  font-size: 0.8em;
-}
-
-.hashtag::before {
-  right: calc(100% + 20px);
-}
-
-.hashtag::after {
-  left: calc(100% + 20px);
-}
-
+/* CTA Button */
 .cta-btn {
   display: inline-block;
   padding: 15px 40px;
@@ -538,7 +347,7 @@ header::before {
   font-size: 1.2rem;
   font-weight: 600;
   box-shadow: 0 5px 15px rgba(77, 0, 255, 0.4);
-  transition: 0.3s ease;
+  transition: var(--transition-standard);
   position: relative;
   border: 1px solid rgba(255, 255, 255, 0.1);
   overflow: hidden;
@@ -566,11 +375,38 @@ header::before {
 
 .cta-btn i {
   margin-left: 8px;
-  transition: 0.3s ease;
+  transition: var(--transition-standard);
 }
 
 .cta-btn:hover i {
   transform: translateX(5px);
+}
+
+/* Hashtag */
+.hashtag {
+  font-size: 1.5rem;
+  margin: 20px 0 40px;
+  color: var(--secondary);
+  text-shadow: var(--neon-glow-secondary);
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block;
+}
+
+.hashtag::before, .hashtag::after {
+  content: '{ }';
+  position: absolute;
+  opacity: 0.4;
+  font-size: 0.8em;
+}
+
+.hashtag::before {
+  right: calc(100% + 20px);
+}
+
+.hashtag::after {
+  left: calc(100% + 20px);
 }
 
 /* Section Styles */
@@ -613,32 +449,37 @@ section {
   box-shadow: var(--neon-glow);
 }
 
-/* Competition Section */
-.competition-section {
+/* Requirements Section */
+.requirements-section {
   background-color: var(--dark);
+  position: relative;
 }
 
-.competition-grid {
+.requirements-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
 }
 
-.competition-card {
-  background: rgba(15, 15, 30, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+/* Card Styles - Unified for requirement cards, jury cards, etc. */
+.card-base {
+  background: var(--card-bg);
+  border: var(--card-border);
   border-radius: 10px;
-  padding: 30px;
-  transition: 0.3s ease;
+  padding: 25px;
+  transition: var(--transition-standard);
   position: relative;
   overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-direction: column;
-  min-height: 300px;
+  box-shadow: var(--card-shadow);
 }
 
-.competition-card::before {
+.card-base:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--card-shadow-hover);
+  border-color: var(--primary);
+}
+
+.card-base::before {
   content: '';
   position: absolute;
   top: 0;
@@ -649,237 +490,246 @@ section {
   z-index: -1;
 }
 
-.competition-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+/* Requirement Cards */
+.requirement-card {
+  background: var(--card-bg);
+  border: var(--card-border);
+  border-radius: 10px;
+  padding: 25px;
+  transition: var(--transition-standard);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.card-icon {
-  font-size: 2rem;
+.requirement-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--card-shadow-hover);
+  border-color: var(--primary);
+}
+
+.requirement-icon {
+  font-size: 2.5rem;
   color: var(--primary);
   margin-bottom: 20px;
   text-shadow: var(--neon-glow);
+  transition: var(--transition-standard);
 }
 
-.card-title {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
+.requirement-card:hover .requirement-icon {
+  transform: scale(1.1);
+}
+
+.requirement-title {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
   position: relative;
   padding-bottom: 10px;
 }
 
-.card-title::after {
+.requirement-title::after {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 0;
-  width: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
   height: 2px;
   background: var(--primary);
   box-shadow: var(--neon-glow);
 }
 
-.card-content {
-  margin-bottom: 20px;
+.requirement-desc {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
   flex-grow: 1;
 }
 
-.card-content p {
-  margin-bottom: 10px;
+.requirement-card::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: rgba(0, 255, 170, 0.2);
+  z-index: 3;
+  pointer-events: none;
+  animation: none;
+  box-shadow: 0 0 8px rgba(0, 255, 170, 0.4);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-.card-progress {
-  height: 4px;
-  background: rgba(255, 255, 255, 0.1);
+.requirement-card:hover::after {
+  animation: req-scanline 2s linear infinite;
+  opacity: 1;
+}
+
+@keyframes req-scanline {
+  0% {
+    top: -3px;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+/* Special card styling */
+.special-card {
+  background: rgba(77, 0, 255, 0.15);
+  border-color: rgba(255, 0, 170, 0.2);
+}
+
+.special-card .requirement-icon {
+  color: var(--secondary);
+  text-shadow: var(--neon-glow-secondary);
+}
+
+.special-card .requirement-title::after {
+  background: var(--secondary);
+  box-shadow: var(--neon-glow-secondary);
+}
+
+/* Jury Section */
+.jury-section {
+  background-color: var(--darker);
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.jury-section-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.jury-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 30px;
+}
+
+.jury-card {
+  text-align: center;
   position: relative;
   overflow: hidden;
-  margin-top: auto;
-  width: 100%;
-  border-radius: 2px;
 }
 
-.progress-indicator {
+.jury-photo {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 15px;
+  box-shadow: var(--card-shadow);
+  border: var(--card-border);
+  transition: var(--transition-standard);
+}
+
+.jury-photo img {
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
   height: 100%;
-  width: 30%;
-  background: var(--primary);
-  box-shadow: var(--neon-glow);
-  animation: progress 3s ease infinite;
+  object-fit: cover;
+  object-position: center;
+  transition: 0.5s ease;
 }
 
-@keyframes progress {
-  0% {
-    left: -30%;
-  }
-  100% {
-    left: 100%;
-  }
+.jury-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(7, 7, 20, 0.8), transparent);
+  z-index: 1;
 }
 
-/* Updated Jury Section Styles */
+.jury-bio-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(7, 7, 20, 0.9);
+  color: var(--light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  z-index: 2;
+  backdrop-filter: blur(3px);
+  border-radius: 10px;
+}
 
-.jury-section {
-    background-color: var(--darker);
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-  }
-  
-  .jury-section-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  .jury-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 30px;
-  }
-  
-  .jury-card {
-    text-align: center;
-    transition: var(--transition-standard);
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .jury-photo {
-    position: relative;
-    width: 100%;
-    padding-bottom: 100%;
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: var(--transition-standard);
-  }
-  
-  .jury-photo img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    transition: 0.5s ease;
-  }
-  
-  .jury-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to top, rgba(7, 7, 20, 0.8), transparent);
-    z-index: 1;
-  }
-  
-  /* Bio hover effect */
-  .jury-bio-hover {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(7, 7, 20, 0.9);
-    color: var(--light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 20px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    font-size: 0.95rem;
-    line-height: 1.5;
-    z-index: 2;
-    backdrop-filter: blur(3px);
-    border-radius: 10px;
-  }
-  
-  .jury-card:hover .jury-bio-hover {
-    opacity: 1;
-  }
-  
-  .jury-card:hover .jury-photo {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-  }
-  
-  .jury-card:hover img {
-    transform: scale(1.05);
-  }
-  
-  /* Add a subtle glowing border on hover */
-  .jury-card:hover .jury-photo {
-    border-color: var(--primary);
-    box-shadow: 0 0 15px rgba(0, 255, 170, 0.3);
-  }
-  
-  .jury-name {
-    font-size: 1.2rem;
-    margin-bottom: 5px;
-    display: block;
-  }
-  
-  .jury-tag {
-    color: var(--secondary);
-    margin-bottom: 10px;
-    font-weight: 600;
-    display: block;
-    margin-top: 0;
-  }
-  
-  /* Enhanced hover effects */
-  .jury-card::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-      linear-gradient(to right, transparent 50%, rgba(77, 0, 255, 0.1) 50%),
-      linear-gradient(to bottom, transparent 50%, rgba(0, 255, 170, 0.1) 50%);
-    background-size: 8px 8px;
-    pointer-events: none;
-    opacity: 0;
-    z-index: 0;
-    transition: opacity 0.5s ease;
-  }
-  
-  .jury-card:hover::after {
-    opacity: 0.3;
-  }
-  
-  /* Media queries */
-  @media (max-width: 768px) {
-    .jury-grid {
-      gap: 20px;
-    }
-    
-    .jury-bio-hover {
-      font-size: 0.85rem;
-      padding: 15px;
-    }
-  }
-  
-  @media (max-width: 576px) {
-    .jury-grid {
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    }
-    
-    .jury-bio-hover {
-      font-size: 0.8rem;
-      padding: 10px;
-    }
-  }
+.jury-card:hover .jury-bio-hover {
+  opacity: 1;
+}
 
-/* Sponsors Section - New */
+.jury-card:hover .jury-photo {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.jury-card:hover img {
+  transform: scale(1.05);
+}
+
+.jury-card:hover .jury-photo {
+  border-color: var(--primary);
+  box-shadow: 0 0 15px rgba(0, 255, 170, 0.3);
+}
+
+.jury-name {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.jury-tag {
+  color: var(--secondary);
+  margin-bottom: 10px;
+  font-weight: 600;
+  display: block;
+  margin-top: 0;
+}
+
+.jury-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(to right, transparent 50%, rgba(77, 0, 255, 0.1) 50%),
+    linear-gradient(to bottom, transparent 50%, rgba(0, 255, 170, 0.1) 50%);
+  background-size: 8px 8px;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 0;
+  transition: opacity 0.5s ease;
+}
+
+.jury-card:hover::after {
+  opacity: 0.3;
+}
+
+/* Sponsors Section */
 .sponsors-section {
   background-color: var(--dark);
   text-align: center;
@@ -908,7 +758,7 @@ section {
 
 .sponsor-item {
   text-align: center;
-  transition: 0.3s ease;
+  transition: var(--transition-standard);
   border-radius: 10px;
   padding: 25px;
   width: 300px;
@@ -921,27 +771,27 @@ section {
 }
 
 .sponsor-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(224, 22, 238, 0.373), rgba(224, 22, 238, 0.533));
-    z-index: 0;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(224, 22, 238, 0.373), rgba(224, 22, 238, 0.533));
+  z-index: 0;
 }
-  
+
 .sponsor-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(77, 0, 255, 0.3);
-    background: rgba(77, 0, 255, 0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(77, 0, 255, 0.3);
+  background: rgba(77, 0, 255, 0.15);
 }
 
 .sponsor-item img {
   width: 250px;
   height: 160px;
   object-fit: contain;
-  transition: 0.3s ease;
+  transition: var(--transition-standard);
   filter: brightness(1.5) contrast(1.2);
   position: relative;
   z-index: 1;
@@ -1005,39 +855,12 @@ footer {
 .social-link {
   color: var(--light);
   font-size: 1.2rem;
-  transition: 0.3s ease;
+  transition: var(--transition-standard);
 }
 
 .social-link:hover {
   color: var(--primary);
   transform: translateY(-3px);
-}
-
-/* Floating Effects */
-.floating {
-  position: absolute;
-  pointer-events: none;
-  z-index: -1;
-  opacity: 0.3;
-  filter: blur(3px);
-}
-
-.floating-1 {
-  top: 20%;
-  left: 10%;
-  width: 150px;
-  height: 150px;
-  background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
-  animation: float 8s infinite alternate;
-}
-
-.floating-2 {
-  bottom: 30%;
-  right: 10%;
-  width: 200px;
-  height: 200px;
-  background: radial-gradient(circle, var(--secondary) 0%, transparent 70%);
-  animation: float 12s infinite alternate-reverse;
 }
 
 /* Matrix Digital Rain */
@@ -1071,61 +894,23 @@ footer {
   }
 }
 
-@keyframes float {
-  0% {
-    transform: translate(0, 0);
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  100% {
-    transform: translate(30px, 30px);
-  }
-}
-
-/* Glitch Effect */
-.glitch {
-  position: relative;
-}
-
-.glitch::before, .glitch::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.8;
-}
-
-.glitch::before {
-  color: #0ff;
-  z-index: -1;
-  animation: glitch-anim-1 0.4s infinite linear alternate;
-}
-
-.glitch::after {
-  color: #f0f;
-  z-index: -2;
-  animation: glitch-anim-2 0.3s infinite linear alternate;
-}
-
-@keyframes glitch-anim-1 {
-  0% {
-    transform: translateX(-2px);
-  }
-  100% {
-    transform: translateX(2px);
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@keyframes glitch-anim-2 {
-  0% {
-    transform: translateX(2px);
-  }
-  100% {
-    transform: translateX(-2px);
-  }
+.fadeIn {
+  animation: fadeIn 0.8s ease forwards;
 }
 
-/* Responsive Styles */
+/* Consolidated Media Queries */
 @media (max-width: 992px) {
   .nav-links {
     gap: 20px;
@@ -1160,7 +945,7 @@ footer {
     height: calc(100vh - 70px);
     padding: 40px 20px;
     backdrop-filter: blur(10px);
-    transition: 0.3s ease;
+    transition: var(--transition-standard);
     border-left: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
   }
@@ -1202,13 +987,57 @@ footer {
     margin-bottom: 40px;
   }
   
-  .competition-grid, .jury-grid {
+  .jury-grid {
     gap: 20px;
   }
   
   .footer-content {
     flex-direction: column;
     gap: 20px;
+  }
+  
+  .header-highlights {
+    flex-direction: column;
+    gap: 15px;
+    padding: 0 20px;
+  }
+    
+  .highlight-box {
+    width: 100%;
+    max-width: none;
+  }
+  
+  .requirements-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .jury-bio-hover {
+    font-size: 0.85rem;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  .header-highlights {
+    flex-direction: row;
+    gap: 15px;
+    padding: 0 20px;
+  }
+  
+  .highlight-box {
+    padding: 12px 15px;
+  }
+  
+  .highlight-icon {
+    font-size: 2rem;
+  }
+  
+  .highlight-content h3 {
+    font-size: 1.1rem;
+  }
+  
+  .highlight-content p {
+    font-size: 0.8rem;
   }
 }
 
@@ -1233,20 +1062,9 @@ footer {
   .jury-grid {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+  
+  .jury-bio-hover {
+    font-size: 0.8rem;
+    padding: 10px;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.fadeIn {
-  animation: fadeIn 0.8s ease forwards;
 }

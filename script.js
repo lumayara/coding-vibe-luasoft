@@ -6,14 +6,12 @@ const countdownElement = document.getElementById('countdown');
 const daysElement = document.getElementById('days');
 const hoursElement = document.getElementById('hours');
 const minutesElement = document.getElementById('minutes');
-const hashtagElement = document.getElementById('vibejam-hashtag');
 
 // Initialize all page functionality
 function initializePage() {
     initPage();
     startCountdown();
     initScrollEffects();
-    createGlitchEffects();
     addFloatingElements();
     createTypewriterEffect();
     addCardInteractivity();
@@ -30,7 +28,7 @@ function initializePage() {
 
 // Initialize page elements
 function initPage() {
-    const fadeElements = document.querySelectorAll('.title-container > *, .competition-card, .jury-card');
+    const fadeElements = document.querySelectorAll('.title-container > *, .requirement-card, .jury-card');
     
     fadeElements.forEach((element, index) => {
         element.classList.add('fadeIn');
@@ -108,7 +106,7 @@ function handleScrollEffects() {
     navElement.classList.toggle('scrolled', window.scrollY > 50);
     
     // Reveal elements on scroll
-    document.querySelectorAll('.competition-card, .jury-card').forEach(element => {
+    document.querySelectorAll('.requirement-card, .jury-card').forEach(element => {
         const elementTop = element.getBoundingClientRect().top;
         if (elementTop < window.innerHeight - 100) {
             element.classList.add('fadeIn');
@@ -134,33 +132,25 @@ function toggleMobileMenu() {
     icon.classList.toggle('fa-times');
 }
 
-// Glitch Effects for Text
-function createGlitchEffects() {
-    if (!hashtagElement) return;
-    
-    hashtagElement.classList.add('glitch');
-    hashtagElement.setAttribute('data-text', hashtagElement.textContent);
-    
-    setInterval(() => {
-        if (Math.random() > 0.95) {
-            hashtagElement.style.animation = 'none';
-            setTimeout(() => {
-                hashtagElement.style.animation = '';
-            }, 50);
-        }
-    }, 2000);
-}
-
 // Add Floating Background Elements
 function addFloatingElements() {
     const header = document.querySelector('header');
     if (!header) return;
     
-    createMatrixEffect(header);
+    // Store the cleanup function reference
+    header.matrixCleanup = createMatrixEffect(header);
+    
+    // Optional: Clean up on page unload to prevent memory leaks
+    window.addEventListener('beforeunload', () => {
+        if (header.matrixCleanup) {
+            header.matrixCleanup();
+        }
+    });
 }
 
 // Matrix-style digital rain effect
 function createMatrixEffect(parent) {
+    // Create container for the matrix effect
     const matrixContainer = document.createElement('div');
     matrixContainer.className = 'matrix-rain-container';
     Object.assign(matrixContainer.style, {
@@ -186,80 +176,135 @@ function createMatrixEffect(parent) {
     
     const columnCount = Math.floor(parent.offsetWidth / 20);
     
+    // Track active columns and their associated cleanup functions
+    const activeColumns = new Map();
+    
+    // Create initial columns
     for (let i = 0; i < columnCount; i++) {
-        createMatrixColumn(matrixContainer, i, columnCount, colors);
+        addMatrixColumn(i);
     }
     
-    const columnInterval = setInterval(() => {
-        if (matrixContainer.children.length < columnCount) {
-            const columnIndex = Math.floor(Math.random() * columnCount);
-            createMatrixColumn(matrixContainer, columnIndex, columnCount, colors);
+    // Create a new matrix column
+    function addMatrixColumn(index) {
+        const column = document.createElement('div');
+        column.className = 'matrix-column';
+        
+        const columnId = `column-${Date.now()}-${Math.random()}`;
+        column.dataset.id = columnId;
+        
+        Object.assign(column.style, {
+            position: 'absolute',
+            top: `-${Math.random() * 100}%`,
+            left: `${(index / columnCount) * 100}%`,
+            width: '20px',
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            textAlign: 'center',
+            overflow: 'hidden',
+            transform: 'translateY(0)',
+            animation: `matrix-fall ${5 + Math.random() * 10}s linear infinite`
+        });
+        
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        const charCount = Math.floor(Math.random() * 15) + 10;
+        
+        // Store intervals for this column
+        const charIntervals = [];
+        
+        for (let i = 0; i < charCount; i++) {
+            const char = document.createElement('div');
+            char.className = 'matrix-char';
+            char.textContent = Math.random() > 0.5 ? '1' : '0';
+            
+            Object.assign(char.style, {
+                fontFamily: "'Orbitron', monospace",
+                fontSize: '14px',
+                height: '20px',
+                fontWeight: 'bold',
+                color: i === 0 ? '#fff' : color,
+                textShadow: i === 0 ? `0 0 8px ${color}, 0 0 15px ${color}` : `0 0 5px ${color}`,
+                opacity: i === 0 ? '1' : (1 - (i / charCount)).toFixed(2)
+            });
+            
+            if (Math.random() > 0.6) {
+                const charInterval = setInterval(() => {
+                    if (Math.random() > 0.9) {
+                        char.textContent = Math.random() > 0.5 ? '1' : '0';
+                    }
+                }, 300 + Math.random() * 700);
+                
+                charIntervals.push(charInterval);
+            }
+            
+            column.appendChild(char);
         }
-    }, 1000);
+        
+        matrixContainer.appendChild(column);
+        
+        // Create cleanup function for this column
+        const cleanup = () => {
+            charIntervals.forEach(interval => clearInterval(interval));
+            if (matrixContainer.contains(column)) {
+                matrixContainer.removeChild(column);
+            }
+            activeColumns.delete(columnId);
+        };
+        
+        // Store reference to the cleanup function
+        activeColumns.set(columnId, cleanup);
+        
+        // Set timeout to remove the column after animation
+        const removeTimeout = setTimeout(() => {
+            column.style.opacity = '0';
+            
+            // Give time for fade-out before removing
+            setTimeout(() => {
+                cleanup();
+                
+                // Create a new column to replace this one
+                if (matrixContainer.isConnected) {
+                    const newIndex = Math.floor(Math.random() * columnCount);
+                    addMatrixColumn(newIndex);
+                }
+            }, 1000);
+        }, 10000 + Math.random() * 20000);
+        
+        // Add removal timeout to the cleanup
+        charIntervals.push(removeTimeout);
+    }
     
-    window.addEventListener('resize', () => {
+    // Handle window resize
+    const handleResize = () => {
         const newColumnCount = Math.floor(parent.offsetWidth / 20);
         if (newColumnCount > columnCount && matrixContainer.children.length < newColumnCount) {
             for (let i = 0; i < newColumnCount - columnCount; i++) {
-                createMatrixColumn(matrixContainer, i, newColumnCount, colors);
+                addMatrixColumn(Math.floor(Math.random() * newColumnCount));
             }
         }
-    });
-}
-
-function createMatrixColumn(container, index, totalColumns, colors) {
-    const column = document.createElement('div');
-    column.className = 'matrix-column';
+    };
     
-    Object.assign(column.style, {
-        position: 'absolute',
-        top: `-${Math.random() * 100}%`,
-        left: `${(index / totalColumns) * 100}%`,
-        width: '20px',
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        textAlign: 'center',
-        overflow: 'hidden',
-        transform: 'translateY(0)',
-        animation: `matrix-fall ${5 + Math.random() * 10}s linear infinite`
-    });
+    window.addEventListener('resize', handleResize);
     
-    const color = colors[Math.floor(Math.random() * colors.length)];
-    const charCount = Math.floor(Math.random() * 15) + 10;
-    
-    for (let i = 0; i < charCount; i++) {
-        const char = document.createElement('div');
-        char.className = 'matrix-char';
-        char.textContent = Math.random() > 0.5 ? '1' : '0';
+    // Master cleanup function for the entire effect
+    const masterCleanup = () => {
+        // Clear all column intervals and remove columns
+        activeColumns.forEach(cleanup => cleanup());
+        activeColumns.clear();
         
-        Object.assign(char.style, {
-            fontFamily: "'Orbitron', monospace",
-            fontSize: '14px',
-            height: '20px',
-            fontWeight: 'bold',
-            color: i === 0 ? '#fff' : color,
-            textShadow: i === 0 ? `0 0 8px ${color}, 0 0 15px ${color}` : `0 0 5px ${color}`,
-            opacity: i === 0 ? '1' : (1 - (i / charCount)).toFixed(2)
-        });
+        // Remove resize listener
+        window.removeEventListener('resize', handleResize);
         
-        if (Math.random() > 0.6) {
-            setInterval(() => {
-                if (Math.random() > 0.9) {
-                    char.textContent = Math.random() > 0.5 ? '1' : '0';
-                }
-            }, 300 + Math.random() * 700);
+        // Remove container if parent still exists
+        if (parent.contains(matrixContainer)) {
+            parent.removeChild(matrixContainer);
         }
-        
-        column.appendChild(char);
-    }
+    };
     
-    container.appendChild(column);
+    // Attach cleanup to the container for external access
+    matrixContainer.cleanup = masterCleanup;
     
-    setTimeout(() => {
-        column.style.opacity = '0';
-        setTimeout(() => column.remove(), 1000);
-    }, 10000 + Math.random() * 20000);
+    return masterCleanup;
 }
 
 // Typewriter effects
@@ -320,7 +365,7 @@ function createTypewriterEffect() {
 
 // Add interactive hover effects to cards
 function addCardInteractivity() {
-    document.querySelectorAll('.competition-card, .jury-card, .sponsor-item').forEach(card => {
+    document.querySelectorAll('.requirement-card, .jury-card, .sponsor-item').forEach(card => {
         card.addEventListener('mousemove', function(e) {
             const rect = this.getBoundingClientRect();
             const x = e.clientX - rect.left;

@@ -5,23 +5,64 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="2025 Vibe Coding Game Jam - The first game jam for AI vibecoded games">
         <title>2025 Vibe Coding Game Jam</title>
-        <!-- Preload critical resources -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        
+        <!-- Resource hints for performance -->
+        <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preconnect" href="https://pbs.twimg.com">
+        
+        <!-- Open Graph tags for better social sharing -->
+        <meta property="og:title" content="2025 Vibe Coding Game Jam">
+        <meta property="og:description" content="The first game jam for AI vibecoded games">
+        <meta property="og:image" content="https://vibejam.io/images/vibejam-og.jpg">
+        <meta property="og:url" content="https://vibejam.io">
+        <meta name="twitter:card" content="summary_large_image">
+        
+        <!-- Only load necessary Font Awesome components -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/fontawesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/solid.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/brands.min.css">
+        
+        <!-- Preload critical fonts -->
+        <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" as="style">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap">
+        
         <link rel="stylesheet" href="styles.css">
+        
+        <!-- Structured data for events -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Event",
+          "name": "2025 Vibe Coding Game Jam",
+          "startDate": "2025-04-01",
+          "endDate": "2025-04-01",
+          "description": "The first game jam for AI vibecoded games",
+          "location": {
+            "@type": "VirtualLocation",
+            "url": "http://jam.pieter.com"
+          },
+          "organizer": {
+            "@type": "Person",
+            "name": "Pieter Levels"
+          }
+        }
+        </script>
     </head>
     <body>    
         <!-- Navigation -->
         <nav class="game-nav" id="game-nav">
             <div class="nav-container container">
                 <a href="#" class="nav-logo" aria-label="VibeJam Home">#<span class="highlight">vibe</span>jam</a>
-                <div class="nav-links">
+                <div class="nav-links" id="nav-links">
                     <a href="#home" class="nav-link">Home</a>
                     <a href="#requirements" class="nav-link">Requirements</a>
                     <a href="#jury" class="nav-link">Jury</a>
                     <a href="#sponsors" class="nav-link">Sponsors</a>
                     <a href="http://jam.pieter.com" class="nav-link btn-nav">Send us your game</a>
                 </div>
-                <button class="nav-mobile" aria-label="Toggle navigation menu">
+                <button class="nav-mobile" aria-label="Toggle navigation menu" id="nav-toggle">
                     <i class="fas fa-bars" aria-hidden="true"></i>
                 </button>
             </div>
@@ -142,7 +183,11 @@
                 <div class="jury-grid">
                     <article class="jury-card">
                         <figure class="jury-photo">
-                            <img src="https://pbs.twimg.com/profile_images/1296667294148382721/9Pr6XrPB_400x400.jpg" alt="Andrej Karpathy" loading="lazy">
+                            <img src="https://pbs.twimg.com/profile_images/1296667294148382721/9Pr6XrPB_400x400.jpg" 
+                                 alt="Andrej Karpathy" 
+                                 loading="lazy"
+                                 width="400"
+                                 height="400">
                             <div class="jury-overlay" aria-hidden="true"></div>
                             <div class="jury-bio-hover">Building @EurekaLabsAI. Previously Director of AI @ Tesla, founding team @ OpenAI, CS231n/PhD @ Stanford.</div>
                         </figure>
@@ -152,7 +197,11 @@
                     
                     <article class="jury-card">
                         <figure class="jury-photo">
-                            <img src="https://pbs.twimg.com/profile_images/1882867567099809793/qTScdAu-_400x400.jpg" alt="Tim Soret" loading="lazy">
+                            <img src="https://pbs.twimg.com/profile_images/1882867567099809793/qTScdAu-_400x400.jpg" 
+                                 alt="Tim Soret" 
+                                 loading="lazy"
+                                 width="400"
+                                 height="400">
                             <div class="jury-overlay" aria-hidden="true"></div>
                             <div class="jury-bio-hover">Founder @oddtalesgames. Directing The Last Night @TLN_Game. Art Direction, Cinematography, Tech Art.</div>
                         </figure>
@@ -162,7 +211,11 @@
                     
                     <article class="jury-card">
                         <figure class="jury-photo">
-                            <img src="https://pbs.twimg.com/profile_images/1619147369999917056/5jd5MK9C_400x400.jpg" alt="Ricardo Cabello" loading="lazy">
+                            <img src="https://pbs.twimg.com/profile_images/1619147369999917056/5jd5MK9C_400x400.jpg" 
+                                 alt="Ricardo Cabello" 
+                                 loading="lazy"
+                                 width="400"
+                                 height="400">
                             <div class="jury-overlay" aria-hidden="true"></div>
                             <div class="jury-bio-hover">Creator of Three.js, WebGL pioneer</div>
                         </figure>
@@ -172,7 +225,11 @@
                     
                     <article class="jury-card">
                         <figure class="jury-photo">
-                            <img src="https://pbs.twimg.com/profile_images/1889693852845383680/ebZkBpU0_400x400.jpg" alt="S13k" loading="lazy">
+                            <img src="https://pbs.twimg.com/profile_images/1889693852845383680/ebZkBpU0_400x400.jpg" 
+                                 alt="S13k" 
+                                 loading="lazy"
+                                 width="400"
+                                 height="400">
                             <div class="jury-overlay" aria-hidden="true"></div>
                             <div class="jury-bio-hover">Vibe Code Consultant, Game Developer & AI Enthusiast</div>
                         </figure>
@@ -182,7 +239,11 @@
                     
                     <article class="jury-card">
                         <figure class="jury-photo">
-                            <img src="https://pbs.twimg.com/profile_images/1589756412078555136/YlXMBzhp_400x400.jpg" alt="Pieter Levels" loading="lazy">
+                            <img src="https://pbs.twimg.com/profile_images/1589756412078555136/YlXMBzhp_400x400.jpg" 
+                                 alt="Pieter Levels" 
+                                 loading="lazy"
+                                 width="400"
+                                 height="400">
                             <div class="jury-overlay" aria-hidden="true"></div>
                             <div class="jury-bio-hover">Indie Maker & Entrepreneur, Founder of Nomad List and many other cool stuff</div>
                         </figure>
@@ -200,11 +261,19 @@
                 <h2 class="section-title">Our Sponsors</h2>
                 <div class="sponsors-grid">
                     <article class="sponsor-item">
-                        <img src="data:image/svg+xml;utf8,%3Csvg width='1em' height='1em' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 51 21.9'%3E%3Cpath d='M24.1 19.3c-4.7 0-7-2.7-7-6.1s3.2-7.7 7.9-7.7 7 2.7 7 6.1-3.2 7.7-7.9 7.7Zm.2-4.3c1.6 0 2.7-1.5 2.7-3.1s-.8-2-2.2-2-2.7 1.5-2.7 3.1.8 2 2.2 2ZM37 19h-4.9l4-18.2H41l-4 18.1Z'/%3E%3Cpath d='M9.6 19.3c-1.5 0-3-.5-3.8-1.7L5.5 19 0 21.9.6 19 4.6.8h4.9L8.1 7.2c1.1-1.2 2.2-1.7 3.6-1.7 3 0 4.9 1.9 4.9 5.5s-2.3 8.3-7 8.3Zm1.9-7.3c0 1.7-1.2 3-2.8 3s-1.7-.3-2.2-.9l.8-3.3c.6-.6 1.2-.9 2-.9 1.2 0 2.2.9 2.2 2.2Z' style='fill-rule:evenodd'/%3E%3Cpath d='M46.1 19.3c-2.8 0-4.9-1-4.9-3.3s0-.7.1-1l1.1-4.9h-2.2l1-4.2h2.2l.8-3.6L49.7 0l-.6 2.3-.8 3.6H51l-1 4.2h-2.7l-.7 3.2v.6c0 .6.4 1.1 1.2 1.1s.6 0 .7-.1v3.9c-.5.4-1.4.5-2.3.5Z'/%3E%3C/svg%3E" alt="Bolt" loading="lazy">
+                        <img src="data:image/svg+xml;utf8,%3Csvg width='1em' height='1em' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 51 21.9'%3E%3Cpath d='M24.1 19.3c-4.7 0-7-2.7-7-6.1s3.2-7.7 7.9-7.7 7 2.7 7 6.1-3.2 7.7-7.9 7.7Zm.2-4.3c1.6 0 2.7-1.5 2.7-3.1s-.8-2-2.2-2-2.7 1.5-2.7 3.1.8 2 2.2 2ZM37 19h-4.9l4-18.2H41l-4 18.1Z'/%3E%3Cpath d='M9.6 19.3c-1.5 0-3-.5-3.8-1.7L5.5 19 0 21.9.6 19 4.6.8h4.9L8.1 7.2c1.1-1.2 2.2-1.7 3.6-1.7 3 0 4.9 1.9 4.9 5.5s-2.3 8.3-7 8.3Zm1.9-7.3c0 1.7-1.2 3-2.8 3s-1.7-.3-2.2-.9l.8-3.3c.6-.6 1.2-.9 2-.9 1.2 0 2.2.9 2.2 2.2Z' style='fill-rule:evenodd'/%3E%3Cpath d='M46.1 19.3c-2.8 0-4.9-1-4.9-3.3s0-.7.1-1l1.1-4.9h-2.2l1-4.2h2.2l.8-3.6L49.7 0l-.6 2.3-.8 3.6H51l-1 4.2h-2.7l-.7 3.2v.6c0 .6.4 1.1 1.2 1.1s.6 0 .7-.1v3.9c-.5.4-1.4.5-2.3.5Z'/%3E%3C/svg%3E" 
+                             alt="Bolt" 
+                             loading="lazy"
+                             width="150"
+                             height="75">
                         <div class="sponsor-name">@boltdotnew</div>
                     </article>
                     <article class="sponsor-item">
-                        <img src="https://www.coderabbit.ai/images/logo-orange.svg" alt="CodeRabbit" loading="lazy">
+                        <img src="https://www.coderabbit.ai/images/logo-orange.svg" 
+                             alt="CodeRabbit" 
+                             loading="lazy"
+                             width="150"
+                             height="75">
                         <div class="sponsor-name">@coderabbitai</div>
                     </article>
                 </div>
@@ -217,7 +286,7 @@
                 <div class="footer-content">
                     <p class="copyright">© 2025 Vibe Coding Game Jam</p>
                     <div class="social-links">
-                        <a href="https://x.com/levelsio/status/1901660771505021314" class="social-link" aria-label="Twitter">
+                        <a href="https://x.com/levelsio/status/1901660771505021314" class="social-link" aria-label="X/Twitter">
                             <i class="fab fa-x" aria-hidden="true"></i>
                         </a>
                     </div>
