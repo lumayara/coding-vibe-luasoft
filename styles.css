@@ -258,8 +258,6 @@ header::before {
     border: var(--card-border);
     box-shadow: var(--card-shadow);
     transition: var(--transition-standard);
-    flex: 1;
-    max-width: 220px;
 }
 
 .highlight-box:hover {
